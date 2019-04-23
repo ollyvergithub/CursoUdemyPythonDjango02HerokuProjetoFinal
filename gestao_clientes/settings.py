@@ -32,7 +32,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
-    'gestao-clientes-ollyver.herokuapp.com',
+    'https://gestao-clientes-ollyver.herokuapp.com/',
     '127.0.0.1'
 ]
 
