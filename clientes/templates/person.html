@@ -1,32 +1,28 @@
-{% load static %}
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block title %} Template Clientes Person - Lista os clientes do banco de dados {% endblock %}
+{% block main %}
+    <div class="container">
+        <h1>Template Clientes Person - Lista os clientes do banco de dados</h1>
 
-<!doctype html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
-    <title>Template Clientes Person - Lista os clientes do banco de dados</title>
-</head>
-<body>
 
-<div class="container">
-    <h1>Template Clientes Person - Lista os clientes do banco de dados</h1>
-    <ul>
-    {% for pessoa in persons %}
-        <li>
-            <a href="{% url 'persons_update' pessoa.id %}">{{pessoa.first_name}}</a>
-            <a class="btn btn-danger" href="{% url 'persons_delete' pessoa.id %}">Deletar</a>
-        </li>
-    {% endfor %}
-    </ul>
+            {% for pessoa in persons %}
+                <div class="row mb-1">
+                    <div class="col-12 col-md-4">
+                        <a href="{% url 'persons_update' pessoa.id %}">{{ pessoa.first_name }}</a>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="col">
+                            <a class="btn btn-info" href="{% url 'persons_update' pessoa.id %}"><i class="fas fa-edit"></i> Editar</a>
+                            <a class="btn btn-danger" href="{% url 'persons_delete' pessoa.id %}"><i class="fas fa-trash-alt"></i> Deletar</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
 
-    <a class="btn btn-success" href="{% url 'persons_new' %}">Nova Pessoa</a>
-    <a class="btn btn-danger" href="{% url 'logout' %}">Sair</a>
 
-</div>
+        <a class="btn btn-success" href="{% url 'persons_new' %}"><i class="fas fa-user"></i> Nova Pessoa</a>
+        <a class="btn btn-danger" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Sair</a>
 
-<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-</body>
-</html>
+    </div>
+{% endblock %}
